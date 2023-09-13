@@ -4,7 +4,9 @@ import { useUsers } from './useUsers'
 
 export function useUserInfo (ID) {
   const { refreshUsers } = useUsers()
+
   const [userInfo, setUserInfo] = useState()
+  
   const originalUserInfo = useRef(userInfo)
 
   useEffect(() => {
