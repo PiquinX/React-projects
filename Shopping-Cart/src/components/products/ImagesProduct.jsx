@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export function ImagesProduct ({ imgs }) {
+export function ImagesProduct ({ imgs, link = ''}) {
   // We set the state that contains which image will be displayed
   const [image, setImage] = useState(0)
 
@@ -17,15 +18,22 @@ export function ImagesProduct ({ imgs }) {
   }
 
   return (
-    <div className='relative z-10 flex flex-col items-center justify-around w-full gap-5 overflow-hidden bg-white rounded h-80'>
-      <button onClick={handleDecrease} className='absolute z-10 left-0 top-[37%]'>
-        <i className='fa-regular fa-circle-left' />
-      </button>
-      <button onClick={handleIncrease} className='absolute z-10 right-0 top-[37%]'>
-        <i className='fa-regular fa-circle-right' />
-      </button>
+    <div className='relative z-10 flex flex-col items-center justify-around w-full gap-5 bg-transparent rounded h-80' >
+      {
+        imgs.length > 1
+        &&
+        <>
+          <button onClick={handleDecrease} className={`${image === 0 ? 'text-gray-400 cursor-default opacity-50' : 'hover:scale-[130%] duration-75'}  absolute z-10 -left-2 top-[37%]`}>
+            <i className='fa-regular fa-circle-left' />
+          </button>
+          <button onClick={handleIncrease} className={`${image === imgs.length - 1 ? 'text-gray-400 cursor-default opacity-50' : 'hover:scale-[130%] duration-75'} absolute z-10 -right-2 top-[37%]`}>
+            <i className='fa-regular fa-circle-right' />
+          </button>
+        </>
+      }
+      
 
-      <div className='relative grid w-[85%] h-56 overflow-hidden bg-white rounded place-content-center'>
+      <Link to={link} className='relative grid w-[85%] h-56 overflow-hidden bg-white rounded place-content-center'>
         {
             imgs.map((img, index) => {
               const imgClass = index === image
@@ -38,7 +46,7 @@ export function ImagesProduct ({ imgs }) {
               )
             })
           }
-      </div>
+      </Link>
       <div className='flex justify-center gap-2'>
         {
             imgs.map((img, index) => {

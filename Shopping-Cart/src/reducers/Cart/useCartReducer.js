@@ -5,10 +5,19 @@ export function useCartReducer () {
   // We call the useReudcer() passing the initial value and the CartReducer.
   const [state, dispatch] = useReducer(CartReducer, InitialCart)
 
-  // Function to add items to the cart.
-  const addToCart = product => dispatch({
-    type: CART_FUNCTION_NAMES.add,
+  // Function to adds one item to the cart.
+  const addOneToCart = product => dispatch({
+    type: CART_FUNCTION_NAMES.addOne,
     payload: product
+  })
+
+  // Function add a variable amount of items to the cart.
+  const addToCart = (product, quantity) => dispatch({
+    type: CART_FUNCTION_NAMES.add,
+    payload: {
+      product,
+      quantity
+    }
   })
 
   // Function to remove one whole item from the cart.
@@ -34,5 +43,5 @@ export function useCartReducer () {
     localStorage.setItem('Cart', JSON.stringify(state))
   }, [state])
 
-  return { state, addToCart, removeFromCart, removeOneFromCart, clearCart }
+  return { state, addToCart, addOneToCart, removeFromCart, removeOneFromCart, clearCart }
 }

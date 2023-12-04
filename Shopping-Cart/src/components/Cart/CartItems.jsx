@@ -2,7 +2,7 @@ import { useCart } from '../../Hooks/useCart'
 
 export function CartItems () {
   // we call the custom hook useCart to get the cart state and the functions to handle it.
-  const { cart, addToCart, removeFromCart, removeOneFromCart } = useCart()
+  const { cart, addOneToCart, removeFromCart, removeOneFromCart } = useCart()
 
   return (
     <>
@@ -25,7 +25,7 @@ export function CartItems () {
                       <div className='flex items-center gap-2 border border-black rounded-3xl w-max'>
                         <button onClick={() => removeOneFromCart(item)} className='px-2 pt-0.5 pb-1 text-2xl font-bold'> - </button>
                         <p className='w-8 px-2 text-center'>{item.quantity}</p>
-                        <button onClick={() => addToCart(item)} className='px-2 pt-0.5 pb-1 text-2xl font-bold'> + </button>
+                        <button onClick={() => addOneToCart(item)} className='px-2 pt-0.5 pb-1 text-2xl font-bold'> + </button>
                       </div>
                       <button className='m-auto w-max' onClick={() => removeFromCart(item)}>
                         <i className='fa-regular fa-trash-can' />

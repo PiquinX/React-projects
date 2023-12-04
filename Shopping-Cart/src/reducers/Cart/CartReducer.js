@@ -1,6 +1,7 @@
 // All the cart functions, this is a good practice because it simplifies the code. You only have to change the value here and will change everywhere.
 export const CART_FUNCTION_NAMES = {
   add: 'ADD_TO_CART',
+  addOne: 'ADD_ONE_TO_CART',
   remove: 'REMOVE_FROM_CART',
   removeOne: 'REMOVE_ONE_FROM_CART',
   clear: 'CLEAR'
@@ -17,6 +18,31 @@ export const CartReducer = (state, action) => {
   // This switch decides which function will be excecuted.
   switch (type) {
     case CART_FUNCTION_NAMES.add: {
+      // We look for the position of the item in the cart(state being the cart).
+      const productIndex = state.findIndex(cartItem => cartItem.id === payload.product.id)
+
+      // If the index is founded, it has to be equal or greater than 0.
+      if (productIndex >= 0) {
+        // We make a clone with this function to make it literally the same.
+        const newState = structuredClone(state)
+
+        // We update the quantity of the product founded.
+        newState[productIndex].quantity += payload.quantity
+
+        return newState
+      }
+
+      // If the items is not founded we add the item and the quantity of the item.
+      return [
+        ...state,
+        {
+          ...payload.product,
+          quantity: payload.quantity
+        }
+      ]
+    }
+    
+    case CART_FUNCTION_NAMES.addOne: {
       // We look for the position of the item in the cart(state being the cart).
       const productIndex = state.findIndex(cartItem => cartItem.id === payload.id)
 

@@ -1,6 +1,6 @@
-import { Select } from '../Select'
+import { Select } from '../../Select'
 import { useEffect, useState } from 'react'
-import { useFilters } from '../../Hooks/useFilters'
+import { useFilters } from '../../../Hooks/useFilters'
 
 export function Filters () {
   // we recover the filter state and the function to change it

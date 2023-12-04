@@ -1,7 +1,7 @@
-import { useSort } from '../Hooks/useSort'
-import { Select } from './Select'
+import { useSort } from '../../Hooks/useSort'
+import { Select } from '../Select'
 import { useState } from 'react'
-import { sortOptionsArray } from '../services/sortOptions'
+import { sortOptionsArray } from '../../services/sortOptions'
 
 export function Sort () {
   const { sort, setSort } = useSort()

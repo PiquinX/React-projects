@@ -1,6 +1,6 @@
-import { useSideBar } from '../../Hooks/useSideBar'
+import { useSideBar } from '../../../Hooks/useSideBar'
 import { Filters } from './Filters'
-import { useFilters } from '../../Hooks/useFilters'
+import { useFilters } from '../../../Hooks/useFilters'
 
 export function AsideFilters () {
   // This customs hook allows us to make a side navBar but we must use the attribute data-side-bar.

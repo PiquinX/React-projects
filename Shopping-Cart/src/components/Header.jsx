@@ -1,12 +1,16 @@
 import { Cart } from './Cart/Cart'
 import { useFilters } from '../Hooks/useFilters'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function Header () {
   // We call the useFilters to get the filters state and the changeSearch to update only the search.
   const { filters, changeSearch } = useFilters()
+  const navigate = useNavigate()
 
   // This function updates the search filter.
   const handleChange = (event) => {
+    navigate('/')
     const newSearch = event.target.value
 
     // If the user types an space the value won't be updated.
@@ -25,7 +29,7 @@ export function Header () {
 
   return (
     <header className='sticky top-0 z-40 h-24 bg-blue-700'>
-      <h1 className='text-2xl py-[1.65rem] font-bold text-white xs:text-3xl sm:text-4xl ml-6 xs:ml-10 lg:ml-24 2xl:ml-44 select-none absolute'>PIQUIN SHOP</h1>
+      <Link to={'/'} className='text-2xl py-[1.65rem] font-bold text-white xs:text-3xl sm:text-4xl ml-6 xs:ml-10 lg:ml-24 2xl:ml-44 select-none absolute'>PIQUIN SHOP</Link>
       <div className='absolute right-0 top-[1.65rem] group mr-24 2xl:mr-44'>
         <input tabIndex={1} id='search' onChange={handleChange} value={filters.search} placeholder='Search' className={`${inputClass} outline-0 px-3 py-1 duration-100 bg-blue-700 text-white border-2 rounded focus:w-44 focus:z-[400] shadow-white focus:border-white focus:pl-10`} />
         <label htmlFor='search'>

@@ -7,11 +7,12 @@ export const CartContext = createContext()
 // We create a provider, this one is used to wrap in the things that we want to be using the context.
 export function CartProvider ({ children }) {
   // We call the custom Hook to get the cart state and the functions to update it.
-  const { state, addToCart, removeFromCart, removeOneFromCart, clearCart } = useCartReducer()
+  const { state, addOneToCart, addToCart, removeFromCart, removeOneFromCart, clearCart } = useCartReducer()
 
   return (
     <CartContext.Provider value={{
       cart: state,
+      addOneToCart,
       addToCart,
       removeFromCart,
       removeOneFromCart,
