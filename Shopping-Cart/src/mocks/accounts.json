@@ -1,0 +1,28 @@
+{
+    "users":[
+        {
+            "userName": "Santy",
+            "mail": "sanpiquin@gmail.com",
+            "password": "1234",
+            "favourites": []
+        },
+        {
+            "userName": "",
+            "mail": "",
+            "password": "1234",
+            "favourites": []
+        },
+        {
+            "userName": "",
+            "mail": "",
+            "password": "1234",
+            "favourites": []
+        },
+        {
+            "userName": "",
+            "mail": "",
+            "password": "1234",
+            "favourites": []
+        }
+    ]
+}

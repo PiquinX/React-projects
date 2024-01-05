@@ -1,8 +1,8 @@
-export function Rating ({ rating }) {
+export function Rating ({ rating, size = 'text-sm' }) {
   const isShowable = rating >= 4 ? 'block' : 'hidden'
 
   return (
-    <div className={`${isShowable} text-sm flex gap-1`}>
+    <div className={`${isShowable} ${size} flex gap-1`}>
       <i className='text-yellow-400 fa-solid fa-star' />
       <i className='text-yellow-400 fa-solid fa-star' />
       <i className='text-yellow-400 fa-solid fa-star' />

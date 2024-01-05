@@ -41,7 +41,7 @@ export const CartReducer = (state, action) => {
         }
       ]
     }
-    
+
     case CART_FUNCTION_NAMES.addOne: {
       // We look for the position of the item in the cart(state being the cart).
       const productIndex = state.findIndex(cartItem => cartItem.id === payload.id)

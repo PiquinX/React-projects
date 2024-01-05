@@ -19,8 +19,20 @@ export default {
       },
       gridTemplateRows: {
         cart: '11% 74% 15%'
+      },
+      keyframes: {
+        succes: {
+          '0%': { transform: 'translateX(0px)' },
+          '100%': { transform: 'translateX(50px)' }
+        }
+      },
+      animation: {
+        succes: 'succes .5s linear forwards'
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer')
+  ]
 }
