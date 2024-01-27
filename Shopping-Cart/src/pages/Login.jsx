@@ -14,7 +14,7 @@ export function Login () {
 
   const { account } = useSesion()
 
-  setInterval(() => {
+  setTimeout(() => {
     if (account) navigate('/')
   }, 100)
 
@@ -55,6 +55,10 @@ export function Login () {
             value={password}
             handleChange={handlePassword}
           />
+          {
+            error.length > 0 &&
+            <p className='text-red-500'>{error}</p>
+          }
         </div>
 
         <button className='w-full py-2 text-lg font-bold text-blue-700 duration-75 border-2 border-blue-700 rounded-lg select-none hover:text-white hover:bg-blue-700 focus:text-white focus:bg-blue-700' >

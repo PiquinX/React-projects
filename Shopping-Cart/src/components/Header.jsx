@@ -58,14 +58,14 @@ export function Header () {
         </div>
         <Cart />
         {
-          account === undefined || !account
+          !account
             ? (
-                <Link to='/login' className='flex gap-2 text-xl text-white'>
+                <Link to='/login' className='flex gap-2 px-3 py-2 text-xl text-white border-2 border-white rounded-lg'>
                   Log In <i className="relative top-[6px] fa-solid fa-right-to-bracket"></i>
                 </Link>
               )
             : (
-              <ProfileDropDownMenu username={account.userName} />
+                <ProfileDropDownMenu username={account.userName} />
               )
         }
       </div>

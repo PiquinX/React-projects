@@ -3,8 +3,9 @@ import allProducts from '../mocks/products.json'
 import { useState } from 'react'
 import { applyDiscount } from '../services/applyDiscount'
 import { useCart } from '../Hooks/useCart'
-import { ProductImages } from '../components/products/ProductImages'
+import { ProductImages } from '../components/Product/ProductImages'
 import { Rating } from '../components/bothProducts/Rating'
+import { AddToCartButton } from '../components/Product/AddToCartButton'
 
 const getWholeProduct = ({ id }) => {
   // We look for the position of the product.
@@ -17,23 +18,12 @@ export function Product () {
   const { id } = useParams()
   const [quantity, setQuantity] = useState(1)
   const { addToCart } = useCart()
-  const [isAdding, setIsAdding] = useState(false)
-  const [succes, setSucces] = useState(false)
 
   const product = getWholeProduct({ id: parseInt(id) })
 
   const handleAdd = () => {
-    setIsAdding(true)
-
-    setTimeout(() => {
-      setSucces(true)
-      setTimeout(() => {
-        addToCart(product, quantity)
-        setQuantity(1)
-        setIsAdding(false)
-        setSucces(false)
-      }, 800)
-    }, 800)
+    addToCart(product, quantity)
+    setQuantity(1)
   }
 
   return (
@@ -63,23 +53,7 @@ export function Product () {
                 <p className='w-8 px-2 text-center'>{quantity}</p>
                 <button onClick={() => setQuantity(quantity + 1)} className='px-2 pt-0.5 pb-1 text-2xl font-bold'> + </button>
               </div>
-              <div className="relative grow">
-                <button
-                  className='w-full px-8 py-3 text-blue-700 duration-75 border-2 border-blue-700 rounded-lg md:px-0 hover:text-white hover:bg-blue-700 focus:text-white focus:bg-blue-700'
-                  onClick={handleAdd} >
-                      Add to Cart <i className='fa-solid fa-cart-shopping' />
-                </button>
-                {
-                  isAdding && !succes
-                    ? <div className='absolute top-0 right-0 z-10 grid w-full h-full py-3 text-white duration-75 bg-blue-800 border-2 border-blue-800 rounded-lg place-items-center' >
-                          <i className="text-xl fa-solid fa-arrows-rotate animate-spin"></i>
-                      </div>
-                    : succes && <div className='absolute top-0 right-0 z-10 grid w-full h-full py-3 text-white duration-75 bg-blue-800 border-2 border-blue-800 rounded-lg place-items-center' >
-                        <i className='text-2xl fa-solid fa-check' />
-                        <span className='absolute animate-succes top-0 left-[44%] bg-blue-800 w-[50px] h-full' />
-                      </div>
-                }
-              </div>
+              <AddToCartButton handleAdd={handleAdd} />
             </div>
           </div>
         </div>

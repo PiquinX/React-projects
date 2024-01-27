@@ -4,25 +4,29 @@
             "userName": "Santy",
             "mail": "sanpiquin@gmail.com",
             "password": "1234",
-            "favourites": []
+            "favourites": [],
+            "id": 1
         },
         {
             "userName": "",
             "mail": "",
             "password": "1234",
-            "favourites": []
+            "favourites": [],
+            "id": 2
         },
         {
             "userName": "",
             "mail": "",
             "password": "1234",
-            "favourites": []
+            "favourites": [],
+            "id": 3
         },
         {
             "userName": "",
             "mail": "",
             "password": "1234",
-            "favourites": []
+            "favourites": [],
+            "id": 4
         }
     ]
 }

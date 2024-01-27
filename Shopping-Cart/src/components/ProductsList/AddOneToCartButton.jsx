@@ -20,8 +20,8 @@ export function AddOneToCartButton ({ addOneToCart }) {
   return (
         <div className="relative grow">
             <button
-            className='w-full py-3 text-blue-700 duration-75 border-2 border-blue-700 rounded-lg hover:text-white hover:bg-blue-700 focus:text-white focus:bg-blue-700'
-            onClick={() => handleAdd()} >
+              className='w-full py-3 text-blue-700 duration-75 border-2 border-blue-700 rounded-lg hover:text-white hover:bg-blue-700 focus:text-white focus:bg-blue-700'
+              onClick={() => handleAdd()} >
                 Add to Cart <i className='fa-solid fa-cart-shopping' />
             </button>
             {

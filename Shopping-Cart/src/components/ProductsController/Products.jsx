@@ -1,24 +1,24 @@
-import { Sort } from '../components/ProductsList/Sort'
-import { AsideFilters } from '../components/ProductsList/Filter/AsideFilters'
-import { ProductsController } from '../components/ProductsController'
+import { useCart } from '../../Hooks/useCart'
+import { ProductListImages } from '../../components/ProductsList/ProductListImages'
+import { Rating } from '../../components/bothProducts/Rating'
+import { applyDiscount } from '../../services/applyDiscount'
+import { Link } from 'react-router-dom'
+import { AddOneToCartButton } from '../../components/ProductsList/AddOneToCartButton'
+import { FavButton } from '../../components/bothProducts/FavButton'
+import { useSesion } from '../../Hooks/useSesion'
 
-export function ProductsList () {
+export function Products ({ products }) {
+  // We call the function addOneToCart from the useCart custom Hook.
+  const { addOneToCart } = useCart()
+
+  const { account, handleFavourites, isInFavs } = useSesion()
+
   return (
-    <>
-      <div className='flex justify-between'>
-          <AsideFilters />
-          <Sort />
-      </div>
-      <ProductsController />
-      {/* <div className='grid gap-10 place-items-center grid-cols-responsive'>
+        <div className='grid gap-10 place-items-center grid-cols-responsive'>
         {
-          sortedProducts.length === 0
-
-            ? <p className='text-2xl text-center'>No matching results.</p>
-
-            : sortedProducts.map(product => (
+            products.map(product => (
               <div key={product.id} className='flex relative flex-col justify-center gap-2 px-5 pb-3 bg-white border rounded max-w-[500px] w-full'>
-                <ImagesProduct
+                <ProductListImages
                   link={`product/${product.title}/${product.id}`}
                   imgs={product.images}
                 />
@@ -50,7 +50,6 @@ export function ProductsList () {
               </div>
             ))
         }
-      </div> */}
-    </>
+      </div>
   )
 }
